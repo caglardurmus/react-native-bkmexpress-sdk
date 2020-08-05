@@ -7,9 +7,10 @@ BKM Express ödeme,kart eşleştirme ve kart değiştirme işlemlerini gerçekle
 
 ## Kurulum
 
-`$ npm install react-native-bkmexpress-sdk --save`
-
-`$ yarn add react-native-bkmexpress-sdk`
+#### npm
+```$ npm install react-native-bkmexpress-sdk --save```
+#### yarn
+```$ yarn add react-native-bkmexpress-sdk```
 
 ## IOS
 
@@ -27,7 +28,7 @@ $ cd ios && pod install && cd ..
 
 Projenizin içindeki **local.properties** dosyasına aşağıdaki keyleri Bkm Expiress'den aldığınız bilgiler ile tanımlayınız.
 
-**AndroidX** desteği bulunmayan uygulamalarınız için versiyon bilgisini **1.1.23** olarak değiştiriniz
+**AndroidX** desteği bulunmayan uygulamalarınız için versiyon bilgisini **1.1.23** olarak değiştiriniz.
 
 ```
 bkm_username=user_name
@@ -55,6 +56,27 @@ allprojects {
     }
 }
 ```
+##### Notlar
+* Eğer uygulamanızın release versiyonunu proguard ile koruyorsanız, lütfen aşağıdaki satırı proguard-rules dosyanıza ekleyiniz.
+
+    ```-keep class com.bkm.** { *; }```
+
+* **2.1.1** versiyonunu kullanırken **Attribute application@allowBackup value=(false)** hatası alırsanız;</br>
+**android:allowBackup="false"** ```true``` olarak değiştiriniz yada **AndroidManifest.xml**'de **manifest**'e ```xmlns:tools="http://schemas.android.com/tools"``` **aplication**'a ```tools:replace="allowBackup"``` kodlarını ekleyiniz.
+
+
+```
+    <manifest 
+        //...
+        xmlns:tools="http://schemas.android.com/tools">
+        <application
+          //...
+          tools:replace="allowBackup">
+          //...
+        </application>
+    </manifest>
+```
+
 
 ## Kullanım
 ```import BkmExpressSdk from 'react-native-bkm-express-sdk';```
@@ -74,10 +96,9 @@ BkmExpressSdk.submitConsumer(token, environment , (callback, result) => {
         } 
     }
 );
-BkmExpressSdk;
 ```
 
-####  RESUBMIT CONSUMER (KART EŞLEME)
+####  RESUBMIT CONSUMER (KART DEĞİŞTİRME)
 * Diğer işlemlerden farklı olarak, ReSubmitConsumer operasyonu <u>daha önceden kart eklemiş</u> kullanıcının tekrardan sisteme giriş yapmadan kart değiştirmesine olanak sağlamaktadır. Bahsi geçen Ticket, BEX Core servisleri tarafından sağlanmaktadır.
 
 ```
@@ -93,7 +114,6 @@ BkmExpressSdk.resubmitConsumer(ticket, environment , (callback, result) => {
         } 
     }
 );
-BkmExpressSdk;
 ```
 ####  PAYMENT (ÖDEME)
 ```
@@ -109,7 +129,6 @@ BkmExpressSdk.payment(token, environment , (callback, result) => {
         } 
     }
 );
-BkmExpressSdk;
 ```
 
 ### Parametreler
