@@ -140,3 +140,5 @@ BkmExpressSdk.payment(token, environment , (callback, result) => {
 | ticket  | String  | Kartı yeniden eşleştirmede kullanılacak Bkm tarafından iletilen ticket numarası |
 | callback | String | İşlem başarılı ise duruma göre obje veya string dönebilir. Başarısız işlemlerde hata mesajı |
 | result | String | Dönen sonuç (0 Başarılı - 1 İptal - 2 Başarısız) |
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](http://www.bynogame.com/tr/destekle/caglardurmus)
